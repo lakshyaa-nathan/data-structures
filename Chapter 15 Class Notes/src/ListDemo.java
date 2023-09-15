@@ -112,11 +112,11 @@ public class ListDemo
             }
         }
           */
-            // an enhanced for loop AUTOMATICALLY creates an iteration
+            // an enhanced for loop AUTOMATICALLY creates an iteration, gives us an error
           for(String n: staff){
 
             if(n.equals("Harry")){
-                staff.add("Charlie");
+                //staff.add("Charlie");
             }
 
           }
