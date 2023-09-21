@@ -13,6 +13,34 @@ public class WordAnalysis
     public static void main(String[] args)
         throws FileNotFoundException
     {
+        // Read the dictionary and novel
+
+        Set <String> dictionaryWords = readWords("Chapter 15 Class Notes/src/words");
+        Set <String> novelWords = readWords("Chapter 15 Class Notes/src/throughTheLookingGlass.txt");
+
+        // Print all words from the novel that aren't in the dictionary
+        
+        for(String word: novelWords){
+            if(!dictionaryWords.contains(word)){
+                System.out.println(word);
+                
+            }
+            
+        }
+        System.out.println("\nThere are "+novelWords.size()+" unique words in the novel.");
+
+
+
+        // Print the number of unique words with less than 3 letters. 
+
+        Iterator<String> iterator = novelWords.iterator();
+        while(iterator.hasNext()){
+            if(iterator.next().length()<=3){
+                iterator.remove();
+            }
+        }
+
+        System.out.println("\nThere are "+novelWords.size()+" unique words with more than three words in the novel.");
     }
 
     /**
@@ -25,6 +53,20 @@ public class WordAnalysis
     public static Set<String> readWords(String filename)
         throws FileNotFoundException
     {
-        return null;
+        Set <String> words = new HashSet<>();
+        //System.out.println(System.getProperty("user.dir"));
+        Scanner in = new Scanner(new File(filename), "UTF-8");
+
+        //Use any character other than letters as delimiters
+        in.useDelimiter("[^a-zA-Z]+");
+        
+
+        // adding words to our set (duplicates are ignored.)
+        while(in.hasNext()){
+            words.add(in.next().toLowerCase());
+
+        }
+        
+        return words;
     }
 }

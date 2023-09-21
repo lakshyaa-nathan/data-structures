@@ -12,8 +12,8 @@ public class Sieve
         System.out.println("Compute primes up to which integer?");
         int n = in.nextInt();
 
-        // Your work goes here
-        . . .
+        Set <Integer> numbers =  new TreeSet <> ();
+
 
 
 
