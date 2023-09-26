@@ -11,6 +11,7 @@ public class SudokuSolver {
     private ArrayList<Set<Integer>> squares;
     private Set<Integer> nums;
 
+
     public SudokuSolver(String fileName) {
         // read the puzzle file
         try (Scanner in = new Scanner(new File(fileName))) {
@@ -35,12 +36,51 @@ public class SudokuSolver {
             System.out.println("Cannot open: " + fileName);
         }
 
+        rows = new ArrayList<> ();
+
+        cols= new ArrayList<> ();
+        squares= new ArrayList<> ();
+
         // create the list of sets for each row (this.rows)
         Set<Integer> rowset =  new HashSet<>();
         
+        // [0, 1, 2, 3, 4, 5]
+        // list[0]
+        // 
+        // [ [ . ], [ . ], [ . ]]
+        // for for
+
+        for(int count = 0; count<9; count++){
+            
+                for(int j = 0; j<grid.length; j++){
+                rowset.add(grid[count][j]);}
+
+                
+            rows.add(rowset);
+
+            rowset.clear();
+        }
+        
+   
+        System.out.println(rows);
+        
 
         // create the list of sets for each col (this.cols)
-        // ...
+        Set<Integer> colset =  new HashSet<>();
+
+        for(int count = 0; count<9; count++){
+            
+                for(int j = 0; j<grid.length; j++){
+                rowset.add(grid[j][count]);}
+
+                
+            cols.add(colset);
+
+            colset.clear();
+        }
+        
+        System.out.println(cols);
+
 
         // create the list of sets for each square (this.squares)
         /* the squares are added to the list row-by-row:
@@ -48,7 +88,29 @@ public class SudokuSolver {
             3 4 5
             6 7 8
          */
-        // ...
+        
+        Set<Integer> squareset =  new HashSet<>();
+
+        int lim = 3;
+        int under = 0;
+        for(int count = under; count<lim && under<9; count++){
+            
+                for(int j = under; j<lim; j++){
+                rowset.add(grid[j][count]);}
+
+                
+            squares.add(squareset);
+
+            squareset.clear();
+            under+=3;
+            lim+=3;
+        }
+
+       
+
+       System.out.println(squares);
+        
+
 
         // create a hash set for [1..9] (this.nums)
         // ...
@@ -153,4 +215,6 @@ public class SudokuSolver {
             System.out.println("Unsolveable...");
         }
     }
+
+       
 }
