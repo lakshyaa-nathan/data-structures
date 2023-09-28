@@ -115,7 +115,10 @@ public class SudokuSolver {
 
 
         // create a hash set for [1..9] (this.nums)
-        // Need help with this part
+        this.nums = new HashSet<>();
+        for (int k = 1; k <= N; k++) {
+            nums.add(k);
+        }
 
         
         
