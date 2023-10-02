@@ -17,44 +17,33 @@ public class StringLengthMap
         try (Scanner in = new Scanner(new File(filename)))
         {
 
-            // Create your map here
-            Map<Integer, Set> map = new HashMap<>();
-            Set<String> words = new HashSet<String>();
-            int count = 0;
+            Map<Integer, String> wordLengths = new HashMap<>();
+            
             while (in.hasNext())
             {
-                
                 String word = clean(in.next());
                 Integer len = word.length();
-                words.get()
-                words.add(word);
-                map.put(len, words);
-                // Update the map here
-                // Modify Worked Example 15.1
-                
-                count++;
 
+                if (wordLengths.get(len) == null) // if there isn't one already
+                {
+                    wordLengths.put(len, word);
+                }
+                else // if there is
+                {
+                    String oldWord = wordLengths.get(len); // what's already in
+                    String newWords = oldWord + ", " + word;
+                    wordLengths.put(len, newWords);
+                }
             }
 
             // Print the strings, in increasing order of their length
             // Use this format: 1: i, a, i
-            Set<Integer> allwords = ((Map<Integer, Set>) words).keySet();
-            boolean finished = false;
-            int i =1;
-            while(finished == false){
-                for(Integer length: allwords){
-                    if(i==count){
-                        finished=true;
-                    }
-                    if(length==i){
-                        System.out.println(length+": "+((Map<Integer, Set>) words).get(i));
-                        i++;
-                    }
-                    
-                    
-            }
-        }
 
+            Set<Integer> keys = wordLengths.keySet();
+            for (Integer key : keys)
+            {
+                System.out.println(key + ": " + wordLengths.get(key));
+            }
 
 
         } catch (FileNotFoundException e)
