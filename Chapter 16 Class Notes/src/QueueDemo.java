@@ -21,5 +21,15 @@ public class QueueDemo
         
         System.out.println("Expected output: Tom, Diana, Harry, Romeo, Juliet, Maria");
         */
-    }
+
+
+        //Create a print queue of strings using a linked list
+        //Remember that a linked list is a queue
+
+      
+
+
+
+
+        }
 }

@@ -24,15 +24,17 @@ public class StringLengthMap
                 String word = clean(in.next());
                 Integer len = word.length();
 
-                if (wordLengths.get(len) == null) // if there isn't one already
+                if (wordLengths.get(len) == null) 
                 {
                     wordLengths.put(len, word);
                 }
-                else // if there is
+                else
                 {
-                    String oldWord = wordLengths.get(len); // what's already in
-                    String newWords = oldWord + ", " + word;
-                    wordLengths.put(len, newWords);
+                    String old = wordLengths.get(len); 
+
+                    String neword = old + ", " + word;
+
+                    wordLengths.put(len, neword);
                 }
             }
 

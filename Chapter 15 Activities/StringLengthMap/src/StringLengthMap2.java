@@ -26,7 +26,7 @@ public class StringLengthMap2
                 String word = clean(in.next());
                 Integer len = word.length();
 
-                words.merge(len, word, (v1, v2) -> v1 + ", " + v2);                
+                words.merge(len, word, (one, two) -> one + ", " +two);                
 
 
             }
@@ -34,8 +34,8 @@ public class StringLengthMap2
             // Print the strings, in increasing order of their length
             // Use this format: 1: i, a, i
 
-            for (Integer x : words.keySet()) {
-                System.out.println(x.toString() + ": " + words.get(x));
+            for (Integer key : words.keySet()) {
+                System.out.println(key.toString() + ": " + words.get(key));
             }
 
         } catch (FileNotFoundException e)
