@@ -9,9 +9,10 @@ public class StackDemo
 {
     public static void main(String[] args)
     {
-        Stack<String> commands = new Stack<>();
+        Stack<String> driveway = new Stack<>();
+        Stack<String> street = new Stack<>();
 
-        // don't need to specify size even though there is a limit
+        
 
         //Push commands onto the top of the stack
 

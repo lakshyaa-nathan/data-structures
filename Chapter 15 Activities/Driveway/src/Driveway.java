@@ -8,13 +8,10 @@ import java.util.Scanner;
 public class Driveway
 {
     /**
-      * Stack representing the cars in the driveway.
+      * Stacks representing the cars in the driveway and street
     */
-    private Stack<Integer> driveway;
-    /**
-      * Stack representing the cars in the street.
-    */
-    private Stack<Integer> street;
+    Stack<Integer> driveway = new Stack<>();
+    Stack<Integer> street = new Stack<>();
 
     /**
       * Constructor.
@@ -22,7 +19,7 @@ public class Driveway
     public Driveway()
     {
         // Complete the constructor
-        ...
+        
 
 
     }
@@ -35,7 +32,9 @@ public class Driveway
     public void add(int licensePlate)
     {
         // Complete this method
-        ...
+        driveway.push(licensePlate);
+
+        
 
 
     }
@@ -48,8 +47,21 @@ public class Driveway
     public void remove(int licensePlate)
     {
         // Complete this method
-        ...
+        int place=0;
+        for(int n=0; n<driveway.size(); n++){
+          if(driveway.get(n)== (-1)*licensePlate){
+              place=n;
+          }
+        } 
 
+
+
+        for(int n=place;n>0;n--){
+          driveway.remove(n);
+          street.add(n);
+
+        }
+        
 
     }
 
@@ -60,11 +72,18 @@ public class Driveway
     {
         System.out.println("In Driveway, starting at first in (one license plate per line):");
         // Print the cars in the driveway here
-        ...
+        
+        for(int n = driveway.size()-1; n>=0; n--){
+          System.out.println(driveway.get(n));
+        }
 
         System.out.println("In Street, starting at first in (one license plate per line):");
         // Print the cars in the street here
-        ...
+        for(int n = street.size()-1; n>=0; n--){
+          System.out.println(street.get(n));
+        }
 
     }
+
+    
 }
