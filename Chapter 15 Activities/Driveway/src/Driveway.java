@@ -19,7 +19,8 @@ public class Driveway
     public Driveway()
     {
         // Complete the constructor
-        
+         driveway = new Stack<>();
+         street = new Stack<>();
 
 
     }
