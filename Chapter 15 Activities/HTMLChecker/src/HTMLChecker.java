@@ -21,8 +21,38 @@ public class HTMLChecker
 
         try (Scanner in = new Scanner(new File(filename)))
         {
-            // Your code goes here
-            . . .
+             String a = in.next();
+            curr = a.substring(1, a.length() - 1);
+            stack.push(curr);
+
+            while(in.hasNext())
+            {
+                String t = in.next();
+                
+                curr = t.substring(1, a.length() - 1);
+
+                test = stack.pop();
+
+                
+                if(!curr.equals("/" + test))
+                {
+                    stack.push(test);
+                    
+                    stack.push(curr);
+                    
+                }
+
+
+                
+                if(stack.size()==0)
+                {
+                    System.out.println("All tags are nested.");
+                }
+                else{
+                    System.out.println("These tags are not nested correctly");
+                }
+
+            }
 
 
         } catch (FileNotFoundException e)
