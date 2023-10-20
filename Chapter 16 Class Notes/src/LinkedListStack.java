@@ -22,7 +22,15 @@ public class LinkedListStack
     */
 
 
+    public void push(Object element){
+        Node newNode = new Node();
 
+        newNode.data = element;
+
+        newNode.next = first;
+
+        this.first = newNode;
+    }
 
 
 
@@ -33,7 +41,13 @@ public class LinkedListStack
 
 
 
+    public Object pop(){
+        Object element = this.first.data;
 
+        this.first = this.first.next;
+
+        return element;
+    }
 
 
 
@@ -44,6 +58,9 @@ public class LinkedListStack
      * @return true if the stack is empty
     */
 
+    public boolean empty(){
+        return (this.first == null);
+    }
 
     static class Node
     {

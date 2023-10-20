@@ -2,7 +2,7 @@ public class QueueDemo
 {
     public static void main(String[] args)
     {
-        /*
+        
         CircularArrayQueue queue = new CircularArrayQueue();
 
         queue.add("Tom");
@@ -14,13 +14,19 @@ public class QueueDemo
         queue.add("Juliet");
         queue.add("Maria");
 
+        queue.add("Lakshyaa");
+
+        queue.add("Samantha");
+
+        queue.add("Marie");
+
         while(!queue.empty())
         {
             System.out.println(queue.remove());
         }
         
         System.out.println("Expected output: Tom, Diana, Harry, Romeo, Juliet, Maria");
-        */
+        
 
 
         //Create a print queue of strings using a linked list
