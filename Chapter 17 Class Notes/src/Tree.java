@@ -115,7 +115,7 @@ public class Tree
 
 
 
-
+ 
     public int leafCount{
         int sum = 0;
         
@@ -124,9 +124,9 @@ public class Tree
         }
         
         for(Node child: children){
-            sum = sum+child.leafCount();}
+            sum = sum + child.leafCount();}
         }
-        return sum
+        return sum;
         }
     }
 }
