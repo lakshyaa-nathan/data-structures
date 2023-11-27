@@ -71,9 +71,8 @@ public class MorseCode
      */
     private static void addSymbol(char letter, String code)
     {
-        /*
-            !!! INSERT CODE HERE
-        */
+       codeMap.put(letter, code);
+       treeInsert(letter,code);
     }
 
     /**
@@ -85,9 +84,47 @@ public class MorseCode
      */
     private static void treeInsert(char letter, String code)
     {
-        /*
-            !!! INSERT CODE HERE
-        */
+        if (code.equals(" ")) return;
+        
+        TreeNode node = decodeTree;
+
+        TreeNode par = null;
+
+        String same = String.valueOf(code);
+
+        Character c = same.charAt(0);
+
+        while (!same.equals("")) {
+
+            c = same.charAt(0);
+
+            par = node;
+
+            if (c == '.') 
+
+                node = node.getLeft();
+            
+            else 
+
+                node = node.getRight();
+            
+
+            
+            if (node == null) {
+
+                node = new TreeNode("_");
+                if (c == '.') {
+                    par.setLeft(node);
+                }
+                else {
+                    par.setRight(node);
+                }
+            }
+
+            same = same.substring(1);
+        }
+
+        node.setValue(letter);
     }
 
     /**
@@ -100,9 +137,15 @@ public class MorseCode
     {
         StringBuffer morse = new StringBuffer(400);
 
-        /*
-            !!! INSERT CODE HERE
-        */
+        text = text.toUpperCase();
+
+        for (int k = 0;k<text.length();k++){
+            if (text.charAt(k) == ' ')
+                morse.append(" ");
+            else{
+                morse.append(codeMap.get(text.charAt(k)) + " ");
+            }
+        }
 
         return morse.toString();
     }
@@ -117,9 +160,34 @@ public class MorseCode
     {
         StringBuffer text = new StringBuffer(100);
 
-        /*
-            !!! INSERT CODE HERE
-        */
+        TreeNode now = decodeTree;
+        int i = 0;
+
+        while(morse.length() > i){
+
+            if(morse.charAt(i) == ' ' && i != morse.length()-1 )
+                {
+                text.append(now.getValue());
+                i++;
+                now = decodeTree;
+
+                if (morse.charAt(i) == ' ')
+                    text.append(" ");
+                else
+                    i = i-1;
+                }
+            else if (i == morse.length()-1 && morse.charAt(i) == ' '){
+                text.append(now.getValue());
+                now = decodeTree;
+            }
+            else if (morse.charAt(i) == '.'){
+                now = now.getLeft();
+            }
+            else if (morse.charAt(i) == '-'){
+                now = now.getRight();
+            }
+            i++;
+        }
 
         return text.toString();
     }
